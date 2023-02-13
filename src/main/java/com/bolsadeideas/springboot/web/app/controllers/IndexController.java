@@ -1,4 +1,5 @@
 package com.bolsadeideas.springboot.web.app.controllers;
+import com.bolsadeideas.springboot.web.app.models.Usuario;
 
 import java.util.Map;
 
@@ -6,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;/*
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestMapping;*/
+import org.springframework.web.servlet.ModelAndView;*/
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
-//@RequestMapping("/app")	//	Rutas de primer nivel: app/usuarior/clientes/etc
+@RequestMapping("/app")	//	Rutas de primer nivel: app/usuarior/clientes/etc
 public class IndexController {
 	
 	//	Metodos: Siempre publicos
@@ -44,6 +46,21 @@ public class IndexController {
 		model.addAttribute("titulo", "Aprendiendo Spring");
 		return "index";
 	}*/
+	
+	
+	
+	//	TEMA: Objeto Model
+	@RequestMapping("/perfil")
+	public String perfil(Model model) {
+		Usuario usuario = new Usuario();	//	Instancia Usuario
+		usuario.setNombre("Mike");
+		usuario.setApellido("Sanchez");
+		
+		model.addAttribute("usuario", usuario);	//	Nombre, Objeto-Instancia
+		model.addAttribute("titulo", "Perfil del usuario: " .concat(usuario.getNombre()));
+		
+		return "perfil";
+	}
 	
 	
 	
