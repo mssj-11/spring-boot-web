@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;/*
-import org.springframework.web.servlet.ModelAndView;*/
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;*/
 
 @Controller
+//@RequestMapping("/app")	//	Rutas de primer nivel: app/usuarior/clientes/etc
 public class IndexController {
 	
 	//	Metodos: Siempre publicos
@@ -26,13 +28,23 @@ public class IndexController {
 	}
 	
 	
-	/*
+	/*	Ejemplo con ModelAndView
 	 * @GetMapping({"/index", "/", "/home"})
 	public ModelAndView index(ModelAndView modelandview) {
 		modelandview.addObject("tituloview", "Titulo con ModelAndView");
 		modelandview.setViewName("index");
 		return modelandview;
 	}*/
-
+	
+	
+	/*
+	//	Ejemplo muy usado en CRUDs (RequestMapping)
+	@GetMapping({"/index", "/", "/home"})	//	Rutas de segunado nivel ("/app/index", "/app/", "/app/home")
+	public String index(Model model) {
+		model.addAttribute("titulo", "Aprendiendo Spring");
+		return "index";
+	}*/
+	
+	
 	
 }
