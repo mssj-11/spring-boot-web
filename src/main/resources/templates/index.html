@@ -15,5 +15,26 @@
     <h4 th:text="${modelandview}"></h4>
     
     
+	<!-- Gracias a el Metodo pasarUsuarios() se puede mostrar los datos, pegando la tabla de usuarios  -->
+	<!--
+	<table th:if="${not usuarios.isEmpty()}">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Correo</th>
+			</tr>
+		</thead>
+		
+		<body>
+			<tr th:each="usuario: ${usuarios}">
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellido}"></td>
+				<td th:text="${usuario.email}"></td>
+			</tr>
+		</body>
+	</table>-->
+    
+    
 </body>
 </html>
