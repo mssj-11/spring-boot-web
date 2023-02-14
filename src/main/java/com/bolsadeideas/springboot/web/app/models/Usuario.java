@@ -6,6 +6,7 @@ public class Usuario {
 	
 	private String nombre;
 	private String apellido;
+	private String email;
 	
 	
 	//	Getter and Setter
@@ -23,6 +24,16 @@ public class Usuario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	
 	
 	
