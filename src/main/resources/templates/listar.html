@@ -10,7 +10,26 @@
 
 	<h1 th:text="${titulo}"></h1>
 	
-	<div th:if="${usuarios.size() == 0}">No existen usuarios en la lista</div>
+	<div th:if="${usuarios.size() == 0}">No existen usuarios en la lista</div><!-- Tambien se puede usar .isEmpty() en lugar de .size() == 0 -->
+	<!-- Cuando existan elementos, se mostraran en la tabla -->
+	<table th:if="${not usuarios.isEmpty()}"><!-- Si no es vacio, se muestra la lista, se puede remplazar not usuarios por !usuarios -->
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Correo</th>
+			</tr>
+		</thead>
+		
+		<body>
+		<!-- Repitiendo <tr> por cada valor en la lista -->
+			<tr th:each="usuario: ${usuarios}"><!-- Creando una variable local (usuario) y llamando la vista(usuarios) -->
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellido}"></td>
+				<td th:text="${usuario.email}"></td>
+			</tr>
+		</body>
+	</table>
 	
 	
 </body>
