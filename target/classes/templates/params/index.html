@@ -10,7 +10,6 @@
 	
 	<h1>Enviar parametros del request HTTP GET - URL</h1>
 	
-
 	<ul>
 		<li>
 		<!-- Enviar: RUTA(parametros) -->
@@ -18,6 +17,15 @@
 		</li>
 		<li>
 			<a th:href="@{/params/string(texto='Hola GET')}">/params/string?texto=Hola GET</a>
+		</li>
+		
+		<!-- Obtener varios parametros de la URL en el Controlador -->
+		<li>
+			<a th:href="@{/params/varios-params(saludo='Como estas Mike', numero=11)}">/params/varios-params?Como estas Mike&numero=11</a>
+		</li>
+		<!-- Otra manera pero con Request -->
+		<li>
+			<a th:href="@{/params/varios-params-request(saludo='Como estas Mike', numero=11)}">/params/varios-params-request?Como estas Mike&numero=11</a>
 		</li>
 	</ul>    
     
