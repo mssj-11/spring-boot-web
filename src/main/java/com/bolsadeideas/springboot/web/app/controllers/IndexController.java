@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,14 +20,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/app")	//	Rutas de primer nivel: app/usuarior/clientes/etc
 public class IndexController {
 	
+	//	Atributos VALUE
+	@Value("${texto.indexcontroller.index.titulo}")
+	private String textoIndex;
+	@Value("${texto.indexcontroller.perfil.titulo}")
+	private String textoPerfil;
+	@Value("${texto.indexcontroller.listar.titulo}")
+	private String textoListar;
+	
+	
+	
 	//	Metodos: Siempre publicos
 	//@RequestMapping(value="/index", method=RequestMethod.GET)	//	Anotacion @RequestMapping
 	@GetMapping({"/index", "/", "/home"})
 	//	Datos del controlador a la vista con ( Model, ModelMap, Map )
 	public String index(Model model, ModelMap modelmap, Map<String, Object> map) {
 		
-		//	Agregando Atributos(Nombre, Valor)
-		model.addAttribute("titulo", "Aprendiendo Spring");
+		/*	Agregando Atributos(Nombre, Valor)
+		model.addAttribute("titulo", "Aprendiendo Spring Framework"); */
+		
+		model.addAttribute("titulo", textoIndex);	//	Usando atributos con VALOR(VALUE)
 		modelmap.addAttribute("titulomap", "Este titulo es con ModelMap");
 		map.put("javamap", "Ejemplo con la clase Map de Java");
 		
@@ -61,8 +74,10 @@ public class IndexController {
 		usuario.setApellido("Sanchez");
 		usuario.setEmail("mike@sanchez.com");
 		
-		model.addAttribute("usuario", usuario);	//	Nombre, Objeto-Instancia
-		model.addAttribute("titulo", "Perfil del usuario: " .concat(usuario.getNombre()));
+		model.addAttribute("usuario", usuario);	/*	Nombre, Objeto-Instancia
+		model.addAttribute("titulo", "Perfil del usuario: " .concat(usuario.getNombre())); */
+		
+		model.addAttribute("titulo", textoPerfil.concat(usuario.getNombre()));	//	Usando atributos con VALOR(VALUE)
 		
 		return "perfil";
 	}
@@ -85,12 +100,14 @@ public class IndexController {
 				new Usuario("Lucas", "Ramirez", "lucas@gmail.com"),
 				new Usuario("Cesar", "Hernandez", "cesar@gmail.com")
 		);*/	//	Se ha movido a pasarUsuarios()
-		
-		model.addAttribute("titulo", "Listado de usuarios: ");
+		/*
+		model.addAttribute("titulo", "Listado de usuarios: ");*/
+		model.addAttribute("titulo", textoListar);	//	Usando atributos con VALOR(VALUE)
 		//model.addAttribute("usuarios", usuarios);	// Ya no es necesario por que en el metodo pasarUsuarios() se ha retornado usuarios;
 		
 		return "listar";
 	}
+	
 	
 	
 	/*	#2 Forma de pasar datos a la lista con la Anotacion @ con esto pueden estar disponibles en index, perfil y listar (ejemplo en index.html)
