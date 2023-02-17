@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"><!-- Añadiendo namespace -->
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Ver</title>
+</head>
+<body>
+	
+	<h1 th:text="${titulo}"></h1>
+	
+	<ul>
+		<li><a th:href="@{/variables/string/} + 'Hola Mike'">/variables/string/Hola Mike</a></li>
+		<li><a th:href="@{/variables/string/} + 'Hola Pedro'">/variables/string/Hola Pedro</a></li>
+		<li><a th:href="@{/variables/string/} + 'Saludos Andres' + '/' + 9">/variables/string/Saludos Andres</a></li>
+		<li><a th:href="@{/variables/string/} + ${'Mismos Saludos Andres'} + '/' + ${9}">/variables/string/Saludos Andres</a></li>    
+    </ul>
+    
+    
+</body>
+</html>
