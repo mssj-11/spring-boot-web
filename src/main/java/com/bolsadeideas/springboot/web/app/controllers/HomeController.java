@@ -12,7 +12,7 @@ public class HomeController {
 	public String home() {
 		//return "redirect:/app/index";
 		//return "redirect:https://www.google.com";	//	A otra Ruta
-		return "forward:/app/index";	//	Solo rutas de controladores, no se puede con externas
+		return "forward:/app/index";	//	Solo rutas de controladores, no se puede con rutas externas
 	}
 	
 	
